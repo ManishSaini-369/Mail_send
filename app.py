@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from threading import Thread
-from main import start_monitoring 
-import os # 🔗 this connects it
+from main import start_monitoring
+import os
 
 app = Flask(__name__)
 
@@ -17,12 +17,7 @@ def status():
 def activate_monitoring():
     monitor_thread = Thread(target=start_monitoring, daemon=True)
     monitor_thread.start()
-    
-if __name__ == "__main__":
-    # 🧵 Start monitor in background thread
-    # monitor_thread = Thread(target=start_monitoring, daemon=True)
-    # monitor_thread.start()
 
-    # 🌐 Start Flask server
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port)

@@ -41,6 +41,10 @@ def get_all_uids():
 print("Monitoring inbox for new emails...")
 previous_uids = get_all_uids()
 
+def start_monitoring():
+    while True:
+        print("Monitoring emails...")
+        time.sleep(10)
 
 
 def fetch_email_by_uid(uid):
