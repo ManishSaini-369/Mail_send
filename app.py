@@ -13,10 +13,15 @@ def home():
 def status():
     return jsonify({"status": "Running", "message": "Email monitoring in background"})
 
-if __name__ == "__main__":
-    # 🧵 Start monitor in background thread
+@app.before_first_request
+def activate_monitoring():
     monitor_thread = Thread(target=start_monitoring, daemon=True)
     monitor_thread.start()
+    
+if __name__ == "__main__":
+    # 🧵 Start monitor in background thread
+    # monitor_thread = Thread(target=start_monitoring, daemon=True)
+    # monitor_thread.start()
 
     # 🌐 Start Flask server
     port = int(os.environ.get("PORT", 5000))
