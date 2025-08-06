@@ -18,4 +18,5 @@ if __name__ == "__main__":
     monitor_thread.start()
 
     # 🌐 Start Flask server
-    app.run(port=5000)
+    app.run(debug=True)
+
